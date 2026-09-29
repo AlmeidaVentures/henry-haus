@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Henry Haus — Your home, handled.</title>
+<meta name="description" content="Henry Haus keeps every manual, warranty and receipt in one place, tells you what your house needs before something breaks, and shows you what you're covered for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #F3EEE4;
+    --surface: #FFFDF8;
+    --ink: #1B2B26;
+    --body: #45524C;
+    --muted: #56615B;
+    --line: #DDD4C4;
+    --accent: #A4532A;
+    --accent-dark: #86421F;
+    --green: #23413A;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --pad: clamp(20px, 6vw, 96px);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+  p { margin: 0; }
+  .wrap { max-width: 1440px; margin: 0 auto; padding-inline: var(--pad); }
+  .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: 999px; font: 600 17px/1 var(--sans); text-decoration: none; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #fff; border: 0; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-ghost { border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { background: var(--ink); color: var(--ground); }
+
+  /* Header */
+  .site-header { border-bottom: 1px solid var(--line); }
+  .site-header .wrap { height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand span { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .nav { display: flex; align-items: center; gap: 36px; font-weight: 500; }
+  .nav a:not(.btn) { text-decoration: none; }
+  .nav a:not(.btn):hover { color: var(--accent); }
+  .nav .btn { min-height: 44px; padding: 0 20px; font-size: 16px; }
+  @media (max-width: 760px) { .nav a:not(.btn) { display: none; } }
+
+  /* Hero */
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: center; padding-block: clamp(48px, 8vw, 104px); }
+  .hero-copy { display: flex; flex-direction: column; gap: 28px; }
+  .hero h1 { font-size: clamp(52px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.025em; }
+  .hero-lede { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: var(--body); max-width: 34em; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 3vw, 32px); display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 60px -30px rgba(27,43,38,.25); }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .panel-head h2 { font-size: clamp(22px, 2vw, 26px); letter-spacing: -0.01em; }
+  .panel-head span { font-size: 14px; color: var(--muted); }
+  .tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .task { display: flex; gap: 14px; align-items: center; padding: 16px 18px; background: var(--ground); border-radius: 14px; }
+  .task svg { flex: none; }
+  .task div { flex: 1; min-width: 0; }
+  .task strong { display: block; font-weight: 600; line-height: 1.35; }
+  .task small { display: block; font-size: 14px; color: var(--muted); }
+  .task time { font-size: 14px; font-weight: 600; }
+  .panel-stats { border-top: 1px solid #E6DECF; padding-top: 18px; display: flex; flex-wrap: wrap; gap: 20px 32px; }
+  .panel-stats dt { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+  .panel-stats dd { margin: 0; font-family: var(--serif); font-size: 28px; }
+
+  /* Statement */
+  .statement { padding-block: clamp(48px, 7vw, 96px); text-align: center; }
+  .statement p { max-width: 26em; margin: 0 auto; font-family: var(--serif); font-size: clamp(26px, 3.2vw, 40px); line-height: 1.3; }
+
+  /* Pillars */
+  .pillars { padding-block: clamp(32px, 5vw, 64px) clamp(56px, 8vw, 112px); }
+  .section-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: clamp(32px, 4vw, 56px); }
+  .section-head h2, .how h2, .moments h2, .join h2 { font-size: clamp(36px, 4.4vw, 56px); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.5vw, 32px); }
+  @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(28px, 3vw, 40px); display: flex; flex-direction: column; gap: 18px; }
+  .card h3 { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.01em; }
+  .card p { font-size: 18px; color: var(--body); }
+
+  /* How it works */
+  .how-box { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: clamp(32px, 5vw, 72px) clamp(24px, 5vw, 80px); }
+  .how-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap-reverse; margin-bottom: clamp(32px, 4vw, 56px); }
+  .step { border-top: 2px solid var(--ink); padding-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .step-num { font-family: var(--serif); font-size: 22px; color: var(--accent); }
+  .step h3 { font-family: var(--sans); font-size: 22px; font-weight: 600; letter-spacing: 0; }
+  .step p { color: var(--body); }
+  @media (max-width: 900px) { .how .grid-3 { gap: 36px; } }
+
+  /* Moments */
+  .moments .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); padding-block: clamp(64px, 9vw, 120px); }
+  .moments ul { list-style: none; margin: 0; padding: 0; }
+  .moments li { padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .moments li:last-child { border-bottom: 0; }
+  .moments strong { display: block; font-size: 20px; font-weight: 600; }
+  .moments li span { color: var(--body); }
+  @media (max-width: 900px) { .moments .wrap { grid-template-columns: 1fr; } }
+
+  /* Join */
+  .join-box { background: var(--green); color: var(--ground); border-radius: 28px; padding: clamp(36px, 5vw, 72px) clamp(24px, 5vw, 80px); display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .join-copy { max-width: 560px; display: flex; flex-direction: column; gap: 14px; }
+  .join h2 { color: var(--surface); }
+  .join-copy p { font-size: 19px; color: #D9D2C3; }
+  .join-form { flex: 1 1 360px; max-width: 480px; display: flex; flex-direction: column; gap: 10px; }
+  .join-form label { font-size: 15px; font-weight: 600; }
+  .join-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .join-row input { flex: 1 1 220px; min-height: 56px; padding: 0 20px; border-radius: 999px; border: 1px solid #6F857D; background: var(--surface); color: var(--ink); font: 17px var(--sans); }
+  .join-row .btn { min-height: 56px; flex: 0 0 auto; }
+  @media (max-width: 480px) { .join-row .btn { flex: 1 1 100%; } }
+  .join-note { font-size: 14px; color: #C4BCAC; }
+  .join-status { font-size: 15px; font-weight: 600; color: #FFFDF8; min-height: 1.4em; }
+
+  /* Footer */
+  .site-footer .wrap { padding-block: 56px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; font-size: 15px; color: var(--muted); }
+  .site-footer .brand-line { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .site-footer .brand-line b { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); }
+  .site-footer nav { display: flex; gap: 12px 28px; flex-wrap: wrap; }
+  .site-footer nav a { text-decoration: none; color: var(--muted); }
+  .site-footer nav a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Henry Haus home">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 15 16 5l12 10"/><path d="M7 13v14h18V13"/><path d="M13 27v-7h6v7"/></svg>
+      <span>Henry Haus</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#what">What it does</a>
+      <a href="#how">How it works</a>
+      <a class="btn btn-primary" href="#join">Get early access</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">For people with more house than time</div>
+        <h1>Your home,<br>handled.</h1>
+        <p class="hero-lede">Henry Haus keeps every manual, warranty and receipt in one place, tells you what your house needs before something breaks, and shows you what you’re actually covered for.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#join">Get early access</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Example of the Henry Haus weekly view">
+        <div class="panel-head">
+          <h2>This week at home</h2>
+          <span>[Your address]</span>
+        </div>
+        <ul class="tasks">
+          <li class="task">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><strong>Replace furnace filter</strong><small>Size and part number saved</small></div>
+            <time>Sat</time>
+          </li>
+          <li class="task">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <div><strong>Dishwasher warranty ends soon</strong><small>Receipt and claim steps ready</small></div>
+            <time>Nov</time>
+          </li>
+          <li class="task">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg>
+            <div><strong>Check gutters before winter</strong><small>Seasonal reminder</small></div>
+            <time>Oct</time>
+          </li>
+        </ul>
+        <dl class="panel-stats">
+          <div><dt>Items on file</dt><dd>[#]</dd></div>
+          <div><dt>Active warranties</dt><dd>[#]</dd></div>
+          <div><dt>Coverage check</dt><dd>Up to date</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <p>Right now, the story of your home lives in a kitchen drawer, three inboxes and your memory. Henry Haus gives it one place to live.</p>
+    </div>
+  </section>
+
+  <section class="pillars" id="what">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What Henry does for you</div>
+        <h2>Three jobs, off your plate.</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="3"/><path d="M13 13h14M13 20h14M13 27h8"/></svg>
+          <h3>Everything, on file</h3>
+          <p>Appliances, model numbers, manuals, warranties and receipts, organized room by room. When something breaks, the answer is two taps away instead of a drawer away.</p>
+        </article>
+        <article class="card">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="28" height="26" rx="3"/><path d="M6 15h28M13 5v6M27 5v6"/><path d="m15 24 3 3 7-7"/></svg>
+          <h3>Maintenance that comes to you</h3>
+          <p>A care schedule built from what’s actually in your home. Henry reminds you before the filter clogs or the season turns, so small jobs never become expensive ones.</p>
+        </article>
+        <article class="card">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5 8 10v9c0 7.5 5 12.5 12 16 7-3.5 12-8.5 12-16v-9L20 5Z"/><path d="m15 20 4 4 7-8"/></svg>
+          <h3>Know what you’re covered for</h3>
+          <p>See which warranties are live, when they end, and where your home coverage might have gaps — explained in plain language, before you ever need to file a claim.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="how-box">
+        <div class="how-head">
+          <h2>Set up in an evening.<br>Useful for years.</h2>
+          <div class="eyebrow">How it works</div>
+        </div>
+        <ol class="grid-3" style="list-style:none;margin:0;padding:0">
+          <li class="step">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Walk your home</h3>
+            <p>Snap the label on each appliance and forward the receipts you already have. No spreadsheets, no typing model numbers.</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Henry organizes it</h3>
+            <p>Manuals are found, warranties are dated, and everything is filed where you’d expect to look for it.</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Stay a step ahead</h3>
+            <p>Timely reminders, warranty alerts and coverage check-ins arrive on their own. You just get on with your week.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="moments">
+    <div class="wrap">
+      <h2>Peace of mind, for the moments that matter.</h2>
+      <ul>
+        <li><strong>When the dishwasher dies</strong><span>The model, the warranty and the receipt are already in hand.</span></li>
+        <li><strong>When you need to make a claim</strong><span>A dated inventory of what you own is ready to share.</span></li>
+        <li><strong>When a contractor asks what’s there</strong><span>Specs, service history and past work in one link.</span></li>
+        <li><strong>When it’s time to sell</strong><span>Hand the next owner a complete history of the home.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="wrap">
+      <div class="join-box">
+        <div class="join-copy">
+          <h2>Give your home a memory.</h2>
+          <p>Join the early-access list and be among the first homeowners to try Henry Haus.</p>
+        </div>
+        <!-- Replace action="#" with your email provider's form URL (e.g. Mailchimp, ConvertKit, Formspree). -->
+        <form class="join-form" action="#" method="post" novalidate>
+          <label for="email">Email address</label>
+          <div class="join-row">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <button class="btn btn-primary" type="submit">Join the list</button>
+          </div>
+          <p class="join-status" role="status" aria-live="polite"></p>
+          <p class="join-note">No spam. [Your privacy note]</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="brand-line"><b>Henry Haus</b><span>Your home, handled.</span></div>
+    <nav aria-label="Footer">
+      <a href="#what">What it does</a>
+      <a href="#how">How it works</a>
+      <a href="#join">Early access</a>
+      <a href="mailto:[contact@yourdomain.com]">[Contact email]</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  // Placeholder signup handling. Remove this once the form posts to a real email provider.
+  document.querySelector('.join-form').addEventListener('submit', function (e) {
+    var form = this, input = form.querySelector('input'), status = form.querySelector('.join-status');
+    if (form.getAttribute('action') !== '#') return; // real endpoint set: let it submit
+    e.preventDefault();
+    if (!input.value || !input.checkValidity()) {
+      status.textContent = 'Enter a valid email address to join the list.';
+      input.focus();
+      return;
+    }
+    status.textContent = 'You’re on the list. We’ll be in touch.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
