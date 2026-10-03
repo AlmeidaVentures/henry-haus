@@ -315,8 +315,8 @@
           <h2>Give your home a memory.</h2>
           <p>Join the early-access list. We’ll invite homeowners in small groups and build around what you tell us.</p>
         </div>
-        <!-- Signups are emailed to contact@henryhaus.ai via FormSubmit (formsubmit.co). -->
-        <form class="join-form" action="https://formsubmit.co/contact@henryhaus.ai" method="post" novalidate>
+        <!-- Signups are emailed via FormSubmit (formsubmit.co); the random string hides the destination address. -->
+        <form class="join-form" action="https://formsubmit.co/66b56ee3d5162d100b31b15a3b8d0374" method="post" novalidate>
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <label for="email">Email address</label>
           <div class="join-row">
@@ -344,10 +344,9 @@
 </footer>
 
 <script>
-  // Sends each signup to contact@henryhaus.ai through FormSubmit.
-  // After FormSubmit emails you an activation link and you click it, you can swap
-  // the address below for the random string they send you, to hide your email from bots.
-  var SIGNUP_ENDPOINT = 'https://formsubmit.co/ajax/contact@henryhaus.ai';
+  // Sends each signup through FormSubmit. The random string stands in for the
+  // destination email address so it isn't exposed to bots.
+  var SIGNUP_ENDPOINT = 'https://formsubmit.co/ajax/66b56ee3d5162d100b31b15a3b8d0374';
 
   document.querySelector('.join-form').addEventListener('submit', function (e) {
     e.preventDefault();
