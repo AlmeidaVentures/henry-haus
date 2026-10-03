@@ -58,6 +58,7 @@
   .hero h1 { font-size: clamp(52px, 7vw, 88px); line-height: 1.02; letter-spacing: -0.025em; }
   .hero-lede { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.55; color: var(--body); max-width: 34em; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-note { font-size: 15px; color: var(--muted); margin-top: -12px; }
   @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
 
   .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 3vw, 32px); display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 60px -30px rgba(27,43,38,.25); }
@@ -88,6 +89,17 @@
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(28px, 3vw, 40px); display: flex; flex-direction: column; gap: 18px; }
   .card h3 { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.01em; }
   .card p { font-size: 18px; color: var(--body); }
+
+  /* Multiple homes */
+  .homes { padding-block: 0 clamp(56px, 8vw, 112px); }
+  .homes .section-head p { font-size: clamp(18px, 1.6vw, 20px); color: var(--body); max-width: 36em; }
+  .home-tabs { list-style: none; margin: 0 0 clamp(32px, 4vw, 48px); padding: 6px; display: inline-flex; flex-wrap: wrap; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; }
+  .home-tabs li { padding: 10px 18px; border-radius: 999px; font-size: 15px; font-weight: 500; color: var(--muted); }
+  .home-tabs li.is-current { background: var(--ink); color: var(--ground); }
+  @media (max-width: 480px) { .home-tabs { border-radius: 18px; } }
+  .home-type { border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .home-type h3 { font-size: clamp(24px, 2.2vw, 28px); letter-spacing: -0.01em; }
+  .home-type p { color: var(--body); }
 
   /* How it works */
   .how-box { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: clamp(32px, 5vw, 72px) clamp(24px, 5vw, 80px); }
@@ -140,6 +152,7 @@
     </a>
     <nav class="nav" aria-label="Main">
       <a href="#what">What it does</a>
+      <a href="#homes">Multiple homes</a>
       <a href="#how">How it works</a>
       <a class="btn btn-primary" href="#join">Get early access</a>
     </nav>
@@ -152,17 +165,18 @@
       <div class="hero-copy">
         <div class="eyebrow">For people with more house than time</div>
         <h1>Your home,<br>handled.</h1>
-        <p class="hero-lede">Henry Haus keeps every manual, warranty and receipt in one place, tells you what your house needs before something breaks, and shows you what you’re actually covered for.</p>
+        <p class="hero-lede">Every manual, warranty and receipt in one place. Reminders before things break. A clear view of what you’re covered for.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#join">Get early access</a>
           <a class="btn btn-ghost" href="#how">See how it works</a>
         </div>
+        <p class="hero-note">Early access is opening in waves.</p>
       </div>
 
       <aside class="panel" aria-label="Example of the Henry Haus weekly view">
         <div class="panel-head">
           <h2>This week at home</h2>
-          <span>[Your address]</span>
+          <span>Example home</span>
         </div>
         <ul class="tasks">
           <li class="task">
@@ -182,8 +196,8 @@
           </li>
         </ul>
         <dl class="panel-stats">
-          <div><dt>Items on file</dt><dd>[#]</dd></div>
-          <div><dt>Active warranties</dt><dd>[#]</dd></div>
+          <div><dt>Items on file</dt><dd>12</dd></div>
+          <div><dt>Active warranties</dt><dd>4</dd></div>
           <div><dt>Coverage check</dt><dd>Up to date</dd></div>
         </dl>
       </aside>
@@ -216,7 +230,39 @@
         <article class="card">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 5 8 10v9c0 7.5 5 12.5 12 16 7-3.5 12-8.5 12-16v-9L20 5Z"/><path d="m15 20 4 4 7-8"/></svg>
           <h3>Know what you’re covered for</h3>
-          <p>See which warranties are live, when they end, and where your home coverage might have gaps — explained in plain language, before you ever need to file a claim.</p>
+          <p>See which warranties are live, when they end, and what your home insurance does and doesn’t cover — in plain language, before you need to file a claim.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="homes" id="homes">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>One home or several.</h2>
+        <p>Every house gets its own file, with its own records, reminders and coverage. Switch between them in a tap.</p>
+      </div>
+      <ul class="home-tabs" aria-label="Example list of homes">
+        <li class="is-current">Our home</li>
+        <li>Lake cabin</li>
+        <li>Mom’s house</li>
+        <li>Elm Street rental</li>
+      </ul>
+      <div class="grid-3">
+        <article class="home-type">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 34h30"/><path d="M9 34V18l11-9 11 9v16"/><path d="M28 6c2 1.5 3 3.5 3 6"/><circle cx="20" cy="22" r="3"/></svg>
+          <h3>Vacation homes</h3>
+          <p>Seasonal reminders for opening and closing the house, every appliance and repair on file, and no more guessing what’s there when you’re hundreds of miles away. Works whether you rent it out or keep it for yourself.</p>
+        </article>
+        <article class="home-type">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 34V17l14-11 14 11v17"/><path d="M20 30s-6-3.6-6-8a3.2 3.2 0 0 1 6-1.6A3.2 3.2 0 0 1 26 22c0 4.4-6 8-6 8Z"/></svg>
+          <h3>A parent’s or relative’s home</h3>
+          <p>Keep track of the furnace, the warranties and the insurance for someone you love, without digging through their drawers. When something needs doing, you’ll know before they have to call you.</p>
+        </article>
+        <article class="home-type">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 34V19l9-7 9 7v15"/><path d="M22 34V14l7-6 7 6v20"/><path d="M2 34h36"/><path d="M10 34v-6h6v6"/></svg>
+          <h3>Rental properties</h3>
+          <p>One file per property, with appliances, service history, warranties and coverage. Plan maintenance between tenants, and hand a contractor everything they need in one link.</p>
         </article>
       </div>
     </div>
@@ -238,7 +284,7 @@
           <li class="step">
             <span class="step-num" aria-hidden="true">02</span>
             <h3>Henry organizes it</h3>
-            <p>Manuals are found, warranties are dated, and everything is filed where you’d expect to look for it.</p>
+            <p>Henry finds the manuals, dates the warranties and files everything where you’d expect to look.</p>
           </li>
           <li class="step">
             <span class="step-num" aria-hidden="true">03</span>
@@ -267,17 +313,18 @@
       <div class="join-box">
         <div class="join-copy">
           <h2>Give your home a memory.</h2>
-          <p>Join the early-access list and be among the first homeowners to try Henry Haus.</p>
+          <p>Join the early-access list. We’ll invite homeowners in small groups and build around what you tell us.</p>
         </div>
-        <!-- Replace action="#" with your email provider's form URL (e.g. Mailchimp, ConvertKit, Formspree). -->
-        <form class="join-form" action="#" method="post" novalidate>
+        <!-- Signups are emailed to contact@henryhaus.ai via FormSubmit (formsubmit.co). -->
+        <form class="join-form" action="https://formsubmit.co/contact@henryhaus.ai" method="post" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <label for="email">Email address</label>
           <div class="join-row">
             <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             <button class="btn btn-primary" type="submit">Join the list</button>
           </div>
           <p class="join-status" role="status" aria-live="polite"></p>
-          <p class="join-note">No spam. [Your privacy note]</p>
+          <p class="join-note">No spam. Unsubscribe anytime.</p>
         </form>
       </div>
     </div>
@@ -289,26 +336,63 @@
     <div class="brand-line"><b>Henry Haus</b><span>Your home, handled.</span></div>
     <nav aria-label="Footer">
       <a href="#what">What it does</a>
+      <a href="#homes">Multiple homes</a>
       <a href="#how">How it works</a>
       <a href="#join">Early access</a>
-      <a href="mailto:[contact@yourdomain.com]">[Contact email]</a>
     </nav>
   </div>
 </footer>
 
 <script>
-  // Placeholder signup handling. Remove this once the form posts to a real email provider.
+  // Sends each signup to contact@henryhaus.ai through FormSubmit.
+  // After FormSubmit emails you an activation link and you click it, you can swap
+  // the address below for the random string they send you, to hide your email from bots.
+  var SIGNUP_ENDPOINT = 'https://formsubmit.co/ajax/contact@henryhaus.ai';
+
   document.querySelector('.join-form').addEventListener('submit', function (e) {
-    var form = this, input = form.querySelector('input'), status = form.querySelector('.join-status');
-    if (form.getAttribute('action') !== '#') return; // real endpoint set: let it submit
     e.preventDefault();
+    var form = this;
+    var input = form.querySelector('input[type="email"]');
+    var button = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.join-status');
+
     if (!input.value || !input.checkValidity()) {
       status.textContent = 'Enter a valid email address to join the list.';
       input.focus();
       return;
     }
-    status.textContent = 'You’re on the list. We’ll be in touch.';
-    form.reset();
+    if (form.querySelector('input[name="_honey"]').value) return; // likely a bot
+
+    button.disabled = true;
+    button.textContent = 'Joining…';
+    status.textContent = '';
+
+    fetch(SIGNUP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email: input.value,
+        _subject: 'New Henry Haus early-access signup',
+        _template: 'table',
+        page: window.location.href
+      })
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (r) {
+        if (r.ok && String(r.data.success) === 'true') {
+          status.textContent = 'You’re on the list. We’ll be in touch.';
+          form.reset();
+        } else {
+          throw new Error((r.data && r.data.message) || 'Signup failed');
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Couldn’t join the list. Check your connection and try again.';
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = 'Join the list';
+      });
   });
 </script>
 </body>
